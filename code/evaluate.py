@@ -9,7 +9,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 
 def main(experiment_name):
     # Define paths
-    test_data_path = 'data/processed/test/diabetes_test.csv'
+    test_data_path = 'data/processed/test/diabetes_processed_test.csv'
     model_path = f'results/{experiment_name}/model.joblib'
     metrics_output_path = f'results/{experiment_name}/metrics.json'
     predictions_output_path = f'results/{experiment_name}/predictions.csv'
