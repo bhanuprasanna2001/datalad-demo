@@ -6,8 +6,8 @@ import datalad.api as dl
 from sklearn.model_selection import train_test_split
 
 input_data_path = 'data/raw/diabetes_raw.csv'
-train_output_path = 'data/processed/train/diabetes_processed_train.csv'
-test_output_path = 'data/processed/test/diabetes_processed_test.csv'
+train_output_path = 'data/processed/train/diabetes_train.csv'
+test_output_path = 'data/processed/test/diabetes_test.csv'
 
 dl.get(input_data_path)
 
