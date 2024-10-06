@@ -20,9 +20,6 @@ train_data_path = 'data/processed/train/diabetes_processed_train.csv'
 params_path = 'params/config.json'
 model_output_path = f'results/{experiment_name}/model.joblib'
 
-dl.get(train_data_path)
-dl.get(params_path)
-
 # Load training data
 train_data = pd.read_csv(train_data_path)
 X_train = train_data.drop('Outcome', axis=1)
