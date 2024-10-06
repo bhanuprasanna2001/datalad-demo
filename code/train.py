@@ -16,9 +16,12 @@ if len(sys.argv) != 2:
 experiment_name = sys.argv[1]
 
 # Define paths
-train_data_path = 'data/processed/train/diabetes_processed_train.csv'
+train_data_path = 'data/processed/train/diabetes_train.csv'
 params_path = 'params/config.json'
 model_output_path = f'results/{experiment_name}/model.joblib'
+
+dl.get(train_data_path)
+dl.get(params_path)
 
 # Load training data
 train_data = pd.read_csv(train_data_path)
@@ -29,19 +32,19 @@ y_train = train_data['Outcome']
 with open(params_path, 'r') as f:
     config = json.load(f)
 
-model_name = config.get('model', 'Ridge')
+model_name = config.get('model', 'LogisticRegression')
 params = config.get('parameters', {})
 
 # Initialize the model
-if model_name == 'Ridge':
-    from sklearn.linear_model import Ridge
-    model = Ridge(**params)
-elif model_name == 'Lasso':
-    from sklearn.linear_model import Lasso
-    model = Lasso(**params)
-elif model_name == 'ElasticNet':
-    from sklearn.linear_model import ElasticNet
-    model = ElasticNet(**params)
+if model_name == 'LogisticRegression':
+    from sklearn.linear_model import LogisticRegression
+    model = LogisticRegression(**params)
+elif model_name == 'DecisionTree':
+    from sklearn.tree import DecisionTreeClassifier
+    model = DecisionTreeClassifier(**params)
+elif model_name == 'RandomForest':
+    from sklearn.ensemble import RandomForestClassifier
+    model = RandomForestClassifier(**params)
 else:
     raise ValueError(f"Unsupported model: {model_name}")
 

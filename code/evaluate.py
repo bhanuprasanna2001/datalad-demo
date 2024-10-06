@@ -5,7 +5,7 @@ import sys
 import json
 import joblib
 import pandas as pd
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 
 # Check for the correct number of arguments
 if len(sys.argv) != 2:
@@ -33,13 +33,21 @@ model = joblib.load(model_path)
 predictions = model.predict(X_test)
 
 # Calculate metrics
-mse = mean_squared_error(y_test, predictions)
-r2 = r2_score(y_test, predictions)
+accuracy = accuracy_score(y_test, predictions)
+precision = precision_score(y_test, predictions)
+recall = recall_score(y_test, predictions)
+f1 = f1_score(y_test, predictions)
+conf_matrix = confusion_matrix(y_test, predictions)
+class_report = classification_report(y_test, predictions, output_dict=True)
 
 # Save metrics
 metrics = {
-    'mse': mse,
-    'r2_score': r2
+    'accuracy': accuracy,
+    'precision': precision,
+    'recall': recall,
+    'f1_score': f1,
+    'confusion_matrix': conf_matrix.tolist(),
+    'classification_report': class_report
 }
 os.makedirs(os.path.dirname(metrics_output_path), exist_ok=True)
 with open(metrics_output_path, 'w') as f:
