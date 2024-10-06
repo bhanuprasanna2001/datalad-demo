@@ -16,7 +16,7 @@ if len(sys.argv) != 2:
 experiment_name = sys.argv[1]
 
 # Define paths
-train_data_path = 'data/processed/train/diabetes_train.csv'
+train_data_path = 'data/processed/train/diabetes_processed_train.csv'
 params_path = 'params/config.json'
 model_output_path = f'results/{experiment_name}/model.joblib'
 
