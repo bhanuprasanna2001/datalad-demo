@@ -20,7 +20,7 @@ raw_data = pd.read_csv(input_data_path)
 # - Feature scaling
 
 # Ensure the target variable is integer type
-data['Outcome'] = data['Outcome'].astype(int)
+raw_data['Outcome'] = raw_data['Outcome'].astype(int)
 
 # Split the data into features and target
 X = raw_data.drop('Outcome', axis=1)  # Adjust 'Outcome' based on your dataset
