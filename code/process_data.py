@@ -19,12 +19,15 @@ raw_data = pd.read_csv(input_data_path)
 # - Encode categorical variables
 # - Feature scaling
 
+# Ensure the target variable is integer type
+data['Outcome'] = data['Outcome'].astype(int)
+
 # Split the data into features and target
 X = raw_data.drop('Outcome', axis=1)  # Adjust 'Outcome' based on your dataset
 y = raw_data['Outcome']
 
 # Split into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
 processed_data = raw_data.copy()
 
