@@ -3,8 +3,8 @@
 import pandas as pd
 import datalad.api as dl
 
-input_data_path = '../data/raw/diabetes_raw.csv'
-output_data_path = '../data/processed/diabetes_processed.csv'
+input_data_path = 'data/raw/diabetes_raw.csv'
+output_data_path = 'data/processed/diabetes_processed.csv'
 
 dl.get(input_data_path)
 
