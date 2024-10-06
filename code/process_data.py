@@ -1,5 +1,6 @@
 # code/process_data.py
 
+import os
 import pandas as pd
 import datalad.api as dl
 from sklearn.model_selection import train_test_split
@@ -30,10 +31,12 @@ processed_data = raw_data.copy()
 # Save the processed data
 
 # Save the processed training data
+os.makedirs(os.path.dirname(train_output_path), exist_ok=True)
 train_data = pd.concat([X_train, y_train], axis=1)
 train_data.to_csv(train_output_path, index=False)
 
 # Save the processed test data
+os.makedirs(os.path.dirname(test_output_path), exist_ok=True)
 test_data = pd.concat([X_test, y_test], axis=1)
 test_data.to_csv(test_output_path, index=False)
 
